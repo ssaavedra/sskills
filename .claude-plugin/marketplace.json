@@ -1,0 +1,5 @@
+{
+  "name": "sskills",
+  "owner": {"name": "ssaavedra"},
+  "plugins": [{"name": "pstack", "source": "./plugins/pstack", "description": "pstack skills (ported from Cursor plugin)"}]
+}
