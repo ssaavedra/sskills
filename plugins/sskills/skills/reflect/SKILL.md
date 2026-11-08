@@ -24,7 +24,7 @@ That covers session (`<session-id>.jsonl`) and subagent (`<session-id>/subagents
 
 One message, three `Agent` calls, `subagent_type: general-purpose`. Reviewers need MCP access to look up the tickets, chat threads, and observability traces the transcript references. Tell them not to edit files.
 
-Each reviewer and the synthesizer name a role line in the `sskills-models.md` rule and a default. Set `model` and `effort` from that line's value (`<model>-<effort>`), or to the default if the rule or the line is missing. Leave `model` and `effort` unset when the value is `auto` or `inherit-parent`. If the Agent tool rejects an entry, use the default and say so. If it rejects the default, use the same model alias at the nearest valid effort from its error message. Pick each subagent's reasoning level (`effort`) for the job, per the Subagents section of the **poteto-mode** skill.
+Each reviewer and the synthesizer name a role line in the `sskills-models.md` rule and a default. Set `model` and `effort` from that line's value (`<model>-<effort>`), or to the default if the rule or the line is missing. Leave `model` and `effort` unset when the value is `auto` or `inherit-parent`. If the Agent tool rejects an entry, use the default and say so. If it rejects the default, use the same model alias at the nearest valid effort from its error message. Pick each subagent's reasoning level (`effort`) for the job, per the Subagents section of the **santislop-mode** skill.
 
 | Lens | Role line | Default `model` | Prompt template |
 |---|---|---|---|

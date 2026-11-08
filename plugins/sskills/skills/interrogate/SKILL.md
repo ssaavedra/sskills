@@ -35,7 +35,7 @@ Each reviewer gets `subagent_type: general-purpose` with "do not edit files" in 
 
 If the Agent tool rejects a configured entry, run that reviewer on its model's table default and say so. Models go by alias: `opus` or `sonnet`. A refused `sonnet` entry runs on Reviewer B's default. With no match, use Reviewer A's default. If it rejects a table default, spawn with the same model alias at the nearest valid effort from its error message, and open a separate PR to update the default table. Do not block the review on the model issue. Never treat an alias entry as a rejected entry or apply either fallback to it.
 
-Read `references/reviewer-prompt.md` and fill in the same template for every reviewer with the stated intent, the diff or file contents, the rubric from `references/rubric.md`, and the code-quality lens from `references/code-quality-review.md`. Pick each subagent's reasoning level (`effort`) for the job, per the Subagents section of the **poteto-mode** skill.
+Read `references/reviewer-prompt.md` and fill in the same template for every reviewer with the stated intent, the diff or file contents, the rubric from `references/rubric.md`, and the code-quality lens from `references/code-quality-review.md`. Pick each subagent's reasoning level (`effort`) for the job, per the Subagents section of the **santislop-mode** skill.
 
 ## Step 4, Synthesize
 

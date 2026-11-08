@@ -6,11 +6,11 @@ there's a growing sense that ai writes too much slop code. i agree. i don't want
 
 **sskills is my answer.** these are the same skills i use everyday to ship high quality code at Cursor. this turns claude code into a real engineering team. the goal is not to maximize loc, in fact it's the opposite. sskills helps you write less, but higher quality code.
 
-**sskills gives you fearless parallelism.** when you can go deep on one agent and trust it to write good, verifiable code, you can truly parallelize with confidence. start multiple agents up with `poteto-mode` and trust that they'll apply rigorous engineering principles to their work.
+**sskills gives you fearless parallelism.** when you can go deep on one agent and trust it to write good, verifiable code, you can truly parallelize with confidence. start multiple agents up with `santislop-mode` and trust that they'll apply rigorous engineering principles to their work.
 
 **claude code gives you the best of all worlds.** every frontier model has its strengths and weaknesses. use any model with sskills. in fact, many of my skills use multi-model workflows to take advantage of each model's unique strengths.
 
-sskills is a fork of lauren tan's [pstack](https://github.com/cursor/plugins/tree/main/pstack) (originally a cursor plugin), maintained and extended by santiago saavedra. it adds [`/santislop-mode`](./skills/santislop-mode/SKILL.md) (S's Antislop Mode), our evolving fork of `/poteto-mode`; the original `/poteto-mode` stays as a reference.
+sskills is a fork of lauren tan's [pstack](https://github.com/cursor/plugins/tree/main/pstack) (originally a cursor plugin), maintained and extended by santiago saavedra. it adds [`/santislop-mode`](./skills/santislop-mode/SKILL.md) (S's Antislop Mode), our evolving fork of [`/poteto-mode`](./skills/poteto-mode/SKILL.md); the original `/poteto-mode` stays as a reference.
 
 fork it. improve it. make it yours. PRs are welcome! 
 
@@ -21,14 +21,14 @@ fork it. improve it. make it yours. PRs are welcome!
 /plugin install sskills@<marketplace>
 ```
 
-plugin skills are namespaced, so you can also type `/sskills:poteto-mode`; the bare name usually works when it's unambiguous.
+plugin skills are namespaced, so you can also type `/sskills:santislop-mode`; the bare name usually works when it's unambiguous.
 
 ## get started
 
 two steps:
 
 1. run [`/setup-sskills`](./skills/setup-sskills/SKILL.md), pick a reasoning budget, and choose which models you want.
-2. use [`/poteto-mode`](./skills/poteto-mode/SKILL.md) whenever you're doing anything that requires rigor.
+2. use [`/santislop-mode`](./skills/santislop-mode/SKILL.md) whenever you're doing anything that requires rigor.
 
 new here? the [sskills guide](./docs/guide/README.md) walks you through a first real task, from setup and prompting through verification and overnight runs. stuck, or unsure which skill fits? ask [`/poteto-help`](./skills/poteto-help/SKILL.md).
 
@@ -36,21 +36,21 @@ that's it. the other skills are situational; the mode skill uses them for you as
 
 ## usage
 
-use [`/poteto-mode`](./skills/poteto-mode/SKILL.md) at the start of a task. it reads your request, picks from a set of playbooks, and runs the other skills as the steps need them.
+use [`/santislop-mode`](./skills/santislop-mode/SKILL.md) at the start of a task. it reads your request, picks from a set of playbooks, and runs the other skills as the steps need them.
 
-type `/poteto-mode` (or `/sskills:poteto-mode`) before your task, so claude code loads the skill for that message.
+type `/santislop-mode` (or `/sskills:santislop-mode`) before your task, so claude code loads the skill for that message.
 
-### just use [`/poteto-mode`](./skills/poteto-mode/SKILL.md)
+### just use [`/santislop-mode`](./skills/santislop-mode/SKILL.md)
 
 this skill is the main shortcut. i use it whenever i need the agent to do rigorous engineering work. it comes with twenty-three playbooks:
 
 ```
-/poteto-mode this pr has a subtle bug where the scroll drifts every 750ms even when idle. repro
+/santislop-mode this pr has a subtle bug where the scroll drifts every 750ms even when idle. repro
 first, then fix and verify.
 ```
 
 ```
-/poteto-mode i'm going to bed. land the stack even if ci flakes. i want everything merged by
+/santislop-mode i'm going to bed. land the stack even if ci flakes. i want everything merged by
 morning.
 ```
 
@@ -59,29 +59,29 @@ morning.
 
 | playbook | for |
 |---|---|
-| [investigation](./skills/poteto-mode/playbooks/investigation.md) | a read-only question. how does x work, why was y built this way, are we sure. |
-| [bug fix](./skills/poteto-mode/playbooks/bug-fix.md) | reproduce a defect, root-cause it, and fix with runtime evidence. |
-| [perf](./skills/poteto-mode/playbooks/perf-issue.md) | trace a measured slowness and improve it against a baseline. |
-| [hillclimb](./skills/poteto-mode/playbooks/hillclimb.md) | sustained, scientific improvement of one metric against a target, looping hypotheses with before/after measurement and one commit per accepted win. |
-| [runtime forensics](./skills/poteto-mode/playbooks/runtime-forensics.md) | diagnose a live symptom (leak, idle-cpu spin, glitch) from instrumentation. |
-| [trace forensics](./skills/poteto-mode/playbooks/trace-forensics.md) | diagnose a captured profiling artifact (cpuprofile, trace, spindump, heap snapshot). |
-| [feature](./skills/poteto-mode/playbooks/feature.md) | new or changed behavior, built from a named data shape. |
-| [refactoring](./skills/poteto-mode/playbooks/refactoring.md) | a behavior-preserving change to structure or shape. |
-| [prototype](./skills/poteto-mode/playbooks/prototype.md) | a throwaway sketch to make a design or behavioral decision cheaply, or to settle an empirical fork by observing it. |
-| [visual parity](./skills/poteto-mode/playbooks/visual-parity.md) | pixel-exact ui equivalence between two implementations. |
-| [authoring a skill](./skills/poteto-mode/playbooks/authoring-a-skill.md) | writing or editing a SKILL.md. |
-| [eval](./skills/poteto-mode/playbooks/eval.md) | test how a skill or prompt change affects agent behavior, blinded. |
-| [babysit](./skills/poteto-mode/playbooks/babysit.md) | drive a pr or a stack to merge-ready: conflicts, review threads, ci. |
-| [shipping](./skills/poteto-mode/playbooks/shipping.md) | independently verify a green stack, then land the contiguous verified run bottom-up through github by default or origin when available. |
-| [autonomous run](./skills/poteto-mode/playbooks/autonomous-run.md) | drive a long task to completion without stopping. |
-| [orchestrate](./skills/poteto-mode/playbooks/orchestrate.md) | a standing project handed to one coordinator chat: multi-day, many stacked prs, fleets of subagents. |
-| [autopilot-full](./skills/poteto-mode/playbooks/autopilot-full.md) | run independent prs to merged with one owner per pr and a root swarm verdict on each round, from the code-ready head on. |
-| [autopilot-stack](./skills/poteto-mode/playbooks/autopilot-stack.md) | build and verify one linear base-branch stack for the operator to review and land. |
-| [session pickup](./skills/poteto-mode/playbooks/session-pickup.md) | resume or take over a prior agent's in-flight work. |
-| [pause safely](./skills/poteto-mode/playbooks/pause-safely.md) | suspend in-flight work cleanly so it can be resumed later. |
-| [multi-phase plan](./skills/poteto-mode/playbooks/multi-phase-plan.md) | work that spans phases or stacked PRs. |
-| [worktree cleanup](./skills/poteto-mode/playbooks/worktree-cleanup.md) | reclaim disk by pruning merged or abandoned worktrees and stale ios simulators, safety-gated. |
-| [opening a pr](./skills/poteto-mode/playbooks/opening-a-pr.md) | open a ready pr from small ordered commits with a conventional commits title and a briefing-style body. invoked at the end of every other playbook. |
+| [investigation](./skills/santislop-mode/playbooks/investigation.md) | a read-only question. how does x work, why was y built this way, are we sure. |
+| [bug fix](./skills/santislop-mode/playbooks/bug-fix.md) | reproduce a defect, root-cause it, and fix with runtime evidence. |
+| [perf](./skills/santislop-mode/playbooks/perf-issue.md) | trace a measured slowness and improve it against a baseline. |
+| [hillclimb](./skills/santislop-mode/playbooks/hillclimb.md) | sustained, scientific improvement of one metric against a target, looping hypotheses with before/after measurement and one commit per accepted win. |
+| [runtime forensics](./skills/santislop-mode/playbooks/runtime-forensics.md) | diagnose a live symptom (leak, idle-cpu spin, glitch) from instrumentation. |
+| [trace forensics](./skills/santislop-mode/playbooks/trace-forensics.md) | diagnose a captured profiling artifact (cpuprofile, trace, spindump, heap snapshot). |
+| [feature](./skills/santislop-mode/playbooks/feature.md) | new or changed behavior, built from a named data shape. |
+| [refactoring](./skills/santislop-mode/playbooks/refactoring.md) | a behavior-preserving change to structure or shape. |
+| [prototype](./skills/santislop-mode/playbooks/prototype.md) | a throwaway sketch to make a design or behavioral decision cheaply, or to settle an empirical fork by observing it. |
+| [visual parity](./skills/santislop-mode/playbooks/visual-parity.md) | pixel-exact ui equivalence between two implementations. |
+| [authoring a skill](./skills/santislop-mode/playbooks/authoring-a-skill.md) | writing or editing a SKILL.md. |
+| [eval](./skills/santislop-mode/playbooks/eval.md) | test how a skill or prompt change affects agent behavior, blinded. |
+| [babysit](./skills/santislop-mode/playbooks/babysit.md) | drive a pr or a stack to merge-ready: conflicts, review threads, ci. |
+| [shipping](./skills/santislop-mode/playbooks/shipping.md) | independently verify a green stack, then land the contiguous verified run bottom-up through github by default or origin when available. |
+| [autonomous run](./skills/santislop-mode/playbooks/autonomous-run.md) | drive a long task to completion without stopping. |
+| [orchestrate](./skills/santislop-mode/playbooks/orchestrate.md) | a standing project handed to one coordinator chat: multi-day, many stacked prs, fleets of subagents. |
+| [autopilot-full](./skills/santislop-mode/playbooks/autopilot-full.md) | run independent prs to merged with one owner per pr and a root swarm verdict on each round, from the code-ready head on. |
+| [autopilot-stack](./skills/santislop-mode/playbooks/autopilot-stack.md) | build and verify one linear base-branch stack for the operator to review and land. |
+| [session pickup](./skills/santislop-mode/playbooks/session-pickup.md) | resume or take over a prior agent's in-flight work. |
+| [pause safely](./skills/santislop-mode/playbooks/pause-safely.md) | suspend in-flight work cleanly so it can be resumed later. |
+| [multi-phase plan](./skills/santislop-mode/playbooks/multi-phase-plan.md) | work that spans phases or stacked PRs. |
+| [worktree cleanup](./skills/santislop-mode/playbooks/worktree-cleanup.md) | reclaim disk by pruning merged or abandoned worktrees and stale ios simulators, safety-gated. |
+| [opening a pr](./skills/santislop-mode/playbooks/opening-a-pr.md) | open a ready pr from small ordered commits with a conventional commits title and a briefing-style body. invoked at the end of every other playbook. |
 
 </details>
 
@@ -89,19 +89,19 @@ morning.
 
 when invoked it:
 
-1. matches your task to a [playbook](./skills/poteto-mode/playbooks/) and opens a todo list whose first items are its steps, copied in verbatim.
+1. matches your task to a [playbook](./skills/santislop-mode/playbooks/) and opens a todo list whose first items are its steps, copied in verbatim.
 2. routes to the other skills as the steps fire.
 3. writes unslopped replies framed for the consumer and the maintainer.
 
-the full rules and playbooks live in [`skills/poteto-mode/SKILL.md`](./skills/poteto-mode/SKILL.md).
+the full rules and playbooks live in [`skills/santislop-mode/SKILL.md`](./skills/santislop-mode/SKILL.md).
 
-claude code has no modes, so invoke `/poteto-mode` at the start of each task. once loaded it stays in the conversation, applies itself when a playbook matches or the task needs rigor, and stays out of the way otherwise. say so to opt out.
+claude code has no modes, so invoke `/santislop-mode` at the start of each task. once loaded it stays in the conversation, applies itself when a playbook matches or the task needs rigor, and stays out of the way otherwise. say so to opt out.
 
-[`/poteto-mode`](./skills/poteto-mode/SKILL.md) works extremely well with claude code's `/loop` skill. you can make claude code work for many hours without sacrificing rigor.
+[`/santislop-mode`](./skills/santislop-mode/SKILL.md) works extremely well with claude code's `/loop` skill. you can make claude code work for many hours without sacrificing rigor.
 
 ## skills
 
-[`/poteto-mode`](./skills/poteto-mode/SKILL.md) runs most of these for you when a step needs them (`how`, `why`, `architect`, `arena`, `swarm`, `interrogate`, `unslop`, `no-comments`, `technical-writing`, `tdd`, and the principles). the table below is for when you want one directly:
+[`/santislop-mode`](./skills/santislop-mode/SKILL.md) runs most of these for you when a step needs them (`how`, `why`, `architect`, `arena`, `swarm`, `interrogate`, `unslop`, `no-comments`, `technical-writing`, `tdd`, and the principles). the table below is for when you want one directly:
 
 ```
 /how do we cancel runs? do we have an n+1 when we look up every run to cancel?
@@ -116,7 +116,7 @@ claude code has no modes, so invoke `/poteto-mode` at the start of each task. on
 
 | skill | use it when |
 |---|---|
-| [`/poteto-mode`](./skills/poteto-mode/SKILL.md) | default entry point for any non-trivial task. |
+| [`/santislop-mode`](./skills/santislop-mode/SKILL.md) | default entry point for any non-trivial task. |
 | [`/poteto-help`](./skills/poteto-help/SKILL.md) | you're new to sskills, or unsure which skill, playbook, or principle fits. finds out what you're trying to do, answers that part, and hands you a prompt to type. runs only when you type `/poteto-help`. |
 | [`/in-your-own-words`](./skills/in-your-own-words/SKILL.md) | you want the agent to play back your goal and the problem before it starts. runs only when you type `/in-your-own-words`. |
 | [`/sharpen`](./skills/sharpen/SKILL.md) | you want a task approached the way a top expert would, aimed at what you're really after, without overspecifying it or deciding your choices for you. |
@@ -152,28 +152,28 @@ claude code has no modes, so invoke `/poteto-mode` at the start of each task. on
 
 ### examples
 
-mostly i type [`/poteto-mode`](./skills/poteto-mode/SKILL.md) at the start of a task and let it route to a playbook. the other skills fire as the steps need them. a few i reach for directly.
+mostly i type [`/santislop-mode`](./skills/santislop-mode/SKILL.md) at the start of a task and let it route to a playbook. the other skills fire as the steps need them. a few i reach for directly.
 
 
 <details>
 <summary>all the examples</summary>
 
 ```
-bug fix:           /poteto-mode this pr has a subtle bug where the scroll drifts every 750ms even
+bug fix:           /santislop-mode this pr has a subtle bug where the scroll drifts every 750ms even
                    when idle. repro first, then fix and verify.
-perf:              /poteto-mode a big list takes a second or two to load even though we virtualize.
+perf:              /santislop-mode a big list takes a second or two to load even though we virtualize.
                    run a cpu trace and tell me why.
-feature:           /poteto-mode build a small feature behind a feature flag. verify it really works.
-prototype:         /poteto-mode build two prototypes of the markdown renderer so we can compare.
+feature:           /santislop-mode build a small feature behind a feature flag. verify it really works.
+prototype:         /santislop-mode build two prototypes of the markdown renderer so we can compare.
                    spawn an agent for each.
-multi-phase:       /poteto-mode open source these skills as a plugin. nothing internal leaks, work
+multi-phase:       /santislop-mode open source these skills as a plugin. nothing internal leaks, work
                    in a temp dir, show me the dependency graph first.
-overnight run:     /poteto-mode i'm going to bed. land the stack even if ci flakes. i want
+overnight run:     /santislop-mode i'm going to bed. land the stack even if ci flakes. i want
                    everything merged by morning.
-babysit:           /poteto-mode check on pr 123. anything outstanding?
-visual parity:     /poteto-mode the row spacing is too tall when this flag is on. the second image
+babysit:           /santislop-mode check on pr 123. anything outstanding?
+visual parity:     /santislop-mode the row spacing is too tall when this flag is on. the second image
                    is correct. repro and fix until it matches.
-figure it out:     /poteto-mode i'm stepping away. migrate every caller from the synchronous store
+figure it out:     /santislop-mode i'm stepping away. migrate every caller from the synchronous store
                    to the new async one, keeping behavior identical. i want to trust it was done
                    right when i'm back.
 how:               /how do we cancel runs? do we have an n+1 when we look up every run to cancel?
@@ -197,19 +197,19 @@ help:              /poteto-help which skill should i use to review this branch?
 
 </details>
 
-## the `poteto-agent` and Comment Sicko subagents
+## the `santislop-agent` and Comment Sicko subagents
 
-[`/poteto-mode`](./skills/poteto-mode/SKILL.md) runs in the chat that receives it. that chat owns the playbook, the todo list, and every subagent spawn.
+[`/santislop-mode`](./skills/santislop-mode/SKILL.md) runs in the chat that receives it. that chat owns the playbook, the todo list, and every subagent spawn.
 
-sskills also ships [`subagent_type: "sskills:poteto-agent"`](./agents/poteto-agent.md) as the wrapper for delegates spawned during a run. it reads `poteto-mode` in full, including its inline principles index, before doing any work. substituting `general-purpose` skips that read and drifts. do not spawn `poteto-agent` to run the playbook itself.
+sskills also ships [`subagent_type: "sskills:santislop-agent"`](./agents/santislop-agent.md) as the wrapper for delegates spawned during a run. it reads `santislop-mode` in full, including its inline principles index, before doing any work. substituting `general-purpose` skips that read and drifts. do not spawn `santislop-agent` to run the playbook itself.
 
-[`/poteto-mode`](./skills/poteto-mode/SKILL.md) and [`subagent_type: "sskills:poteto-agent"`](./agents/poteto-agent.md) route through the same wrapper.
+[`/santislop-mode`](./skills/santislop-mode/SKILL.md) and [`subagent_type: "sskills:santislop-agent"`](./agents/santislop-agent.md) route through the same wrapper.
 
 sskills also ships [Comment Sicko](./agents/comment-sicko.md), a read-only comment reviewer available as `subagent_type: "sskills:comment-sicko"`. usually invoke it through [`/no-comments`](./skills/no-comments/SKILL.md), not directly.
 
 ## principles
 
-twenty-four short skills, one principle each. `poteto-mode` indexes them inline and reads that index at task start. the standalone files are there so other skills can reference a principle by name, and so the index can point at the full rule for each.
+twenty-four short skills, one principle each. `santislop-mode` indexes them inline and reads that index at task start. the standalone files are there so other skills can reference a principle by name, and so the index can point at the full rule for each.
 
 <details>
 <summary>all twenty-four principles</summary>
@@ -245,21 +245,21 @@ twenty-four short skills, one principle each. `poteto-mode` indexes them inline 
 
 ## not shipped here
 
-a few things `poteto-mode` references but doesn't bundle:
+a few things `santislop-mode` references but doesn't bundle:
 
 - `/deslop` has no counterpart here. use the `simplify` skill (built into claude code; reviews changed code and applies cleanups) together with `/no-comments`.
 - `run` (launch and drive apps and CLIs/TUIs) and `claude-in-chrome` (browser UIs) are claude code skills, not part of sskills.
-- `skill-creator` replaces cursor's `/create-skill`. inside `poteto-mode`, the [babysit playbook](./skills/poteto-mode/playbooks/babysit.md) owns pr-status requests.
+- `skill-creator` replaces cursor's `/create-skill`. inside `santislop-mode`, the [babysit playbook](./skills/santislop-mode/playbooks/babysit.md) owns pr-status requests.
 
 ## why are there no planning skills?
 
-claude code already has a great plan mode which works great with sskills. but personally, i don't believe in planning. the best spec is code. if you do want to make a plan, [`/poteto-mode`](./skills/poteto-mode/SKILL.md) covers it, but it's not a default. 
+claude code already has a great plan mode which works great with sskills. but personally, i don't believe in planning. the best spec is code. if you do want to make a plan, [`/santislop-mode`](./skills/santislop-mode/SKILL.md) covers it, but it's not a default. 
 
 ## make it yours
 
-`poteto-mode` is my style. you may not want exactly that.
+`santislop-mode` is my style. you may not want exactly that.
 
-type [`/automate-me`](./skills/automate-me/SKILL.md). it mines your recent transcripts, drafts a `<your-name>-mode` skill from how you've actually worked, and routes through sskills underneath. you keep sskills as the base and end up with your own routing skill alongside `poteto-mode`.
+type [`/automate-me`](./skills/automate-me/SKILL.md). it mines your recent transcripts, drafts a `<your-name>-mode` skill from how you've actually worked, and routes through sskills underneath. you keep sskills as the base and end up with your own routing skill alongside `santislop-mode`.
 
 models are configurable too. type [`/setup-sskills`](./skills/setup-sskills/SKILL.md). it detects the models you have access to and writes a small rules file (`~/.claude/rules/sskills-models.md`, loaded every session) mapping each role (code, judgment, the review panels) to a model. every skill reads it and falls back to sensible defaults when the file is absent, so you override only what you want.
 

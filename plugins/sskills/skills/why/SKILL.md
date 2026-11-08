@@ -8,7 +8,7 @@ disable-model-invocation: true
 
 Investigate the motivation and intent behind code. The companion `how` skill answers what the code does and how it works. `why` answers what forces led to its shape.
 
-Each spawn below names a role line in the `sskills-models.md` rule and a default. Set `model` and `effort` from that line's value (`<model>-<effort>`), or to the default if the rule or the line is missing. Leave `model` and `effort` unset when the value is `auto` or `inherit-parent`. If the Agent tool rejects an entry, use the default and say so. If it rejects the default, use the same model alias at the nearest valid effort from its error message. Pick each subagent's reasoning level (`effort`) for the job, per the Subagents section of the **poteto-mode** skill.
+Each spawn below names a role line in the `sskills-models.md` rule and a default. Set `model` and `effort` from that line's value (`<model>-<effort>`), or to the default if the rule or the line is missing. Leave `model` and `effort` unset when the value is `auto` or `inherit-parent`. If the Agent tool rejects an entry, use the default and say so. If it rejects the default, use the same model alias at the nearest valid effort from its error message. Pick each subagent's reasoning level (`effort`) for the job, per the Subagents section of the **santislop-mode** skill.
 
 Every spawn is `general-purpose`, which keeps MCP access for the MCP-backed investigators and the synthesizer's citation spot-checks. Investigators still shouldn't write anything. Say so in the brief.
 

@@ -1,6 +1,6 @@
 ---
 name: Santislop Mode
-description: S's Antislop Mode. Santiago's agent style, forked from poteto-mode, for concise, detailed responses, deliberate subagents, unslopped prose, simple code, and verified work. Use for /santislop-mode, or requests to work in this style.
+description: S's Antislop Mode. Santiago's agent style, forked from santislop-mode, for concise, detailed responses, deliberate subagents, unslopped prose, simple code, and verified work. Use for /santislop-mode, or requests to work in this style.
 disable-model-invocation: true
 icon: crown
 color: yellow

@@ -1,6 +1,6 @@
 ---
 name: poteto-help
-description: Guides users through sskills setup, /poteto-mode, and picking the skill, playbook, or principle for a task. Type /poteto-help with a question.
+description: Guides users through sskills setup, /santislop-mode, and picking the skill, playbook, or principle for a task. Type /poteto-help with a question.
 disable-model-invocation: true
 ---
 
@@ -8,7 +8,7 @@ disable-model-invocation: true
 
 Answer the user's question about sskills, hand them a prompt they can send, and link the file the answer came from. For a help question, don't start the work. The user asked how, and a sskills run spends real tokens, so let them send the prompt.
 
-A message that asks for work, such as "use sskills to fix this bug", is not a help question. Read [`poteto-mode`](../poteto-mode/SKILL.md), do the work under it, and mention once that `/poteto-mode` has to be invoked at the start of each task.
+A message that asks for work, such as "use sskills to fix this bug", is not a help question. Read [`santislop-mode`](../santislop-mode/SKILL.md), do the work under it, and mention once that `/santislop-mode` has to be invoked at the start of each task.
 
 This file maps questions to the skills and guide pages that hold the answers. Those files own the details. Read the file you route to before you quote it, and trust it when it disagrees with this map. The links here point into the installed plugin, which the user may not be able to open, so give the user the file's public copy: `https://github.com/cursor/plugins/blob/main/sskills/` followed by its path.
 
@@ -17,7 +17,7 @@ This file maps questions to the skills and guide pages that hold the answers. Th
 Infer the need from the message and the conversation. A named situation, such as "which skill reviews a PR?", goes straight to its section. If the need is still unclear, ask one multiple-choice question with these options, then answer only the section they pick:
 
 - Get set up
-- Start a task with `/poteto-mode`
+- Start a task with `/santislop-mode`
 - Pick a skill for a situation
 - Fix a run that went wrong
 - Make sskills my own
@@ -34,31 +34,31 @@ When the model rule is missing and it matters, ask whether the user wants to pic
 
 ## Get set up
 
-1. Install with `/plugin marketplace add <path-or-repo>` and then `/plugin install sskills@<marketplace>` in Claude Code. Plugin skills are namespaced, so `/sskills:poteto-mode` works everywhere and the bare name usually works when it's unambiguous.
+1. Install with `/plugin marketplace add <path-or-repo>` and then `/plugin install sskills@<marketplace>` in Claude Code. Plugin skills are namespaced, so `/sskills:santislop-mode` works everywhere and the bare name usually works when it's unambiguous.
 2. Run [`/setup-sskills`](../setup-sskills/SKILL.md). It asks for a reasoning budget, maps a model to each role, and writes a rules file. The rules file applies to new sessions.
-3. Start a real task with `/poteto-mode`, a goal, and a check that can pass or fail.
+3. Start a real task with `/santislop-mode`, a goal, and a check that can pass or fail.
 
 Installing changes nothing until the user invokes a skill. Only `/setup-sskills` loads from the user's words. The [README](../../README.md) and [guide page 1](../../docs/guide/01-setup.md) have the details. Offer to word their first prompt with them, per [`references/prompting.md`](references/prompting.md).
 
-If cost is the worry, say where the tokens go and how to spend fewer. sskills spends extra tokens on subagents and review panels. Rerun `/setup-sskills` and pick a smaller budget or cheaper models. A role set to `auto` or `inherit-parent` runs on the chat's model, which saves tokens when the chat runs on a cheaper model. A shorter panel list runs fewer subagents, one for each entry. Save `/poteto-mode` for work that needs rigor.
+If cost is the worry, say where the tokens go and how to spend fewer. sskills spends extra tokens on subagents and review panels. Rerun `/setup-sskills` and pick a smaller budget or cheaper models. A role set to `auto` or `inherit-parent` runs on the chat's model, which saves tokens when the chat runs on a cheaper model. A shorter panel list runs fewer subagents, one for each entry. Save `/santislop-mode` for work that needs rigor.
 
-sskills is built for Claude Code, as a fork of pstack (a port of the Cursor plugin by Lauren Tan). Its skills use the Agent Skills format, so other tools can read them. But most workflow skills, including `/poteto-mode`, `/how`, `/why`, and `/teach`, spawn Claude Code subagents through the `Agent` tool with per-role models, so those parts may not work elsewhere.
+sskills is built for Claude Code, as a fork of pstack (a port of the Cursor plugin by Lauren Tan). Its skills use the Agent Skills format, so other tools can read them. But most workflow skills, including `/santislop-mode`, `/how`, `/why`, and `/teach`, spawn Claude Code subagents through the `Agent` tool with per-role models, so those parts may not work elsewhere.
 
-## Start a task with `/poteto-mode`
+## Start a task with `/santislop-mode`
 
-`/poteto-mode` matches the task to a playbook, copies the playbook's steps into the todo list, and runs the other skills as the steps need them. A step it skips stays in the list as `skip: <reason>`. A good prompt states the goal and how to tell it's done. It doesn't list skills, because a hand-written sequence tends to drop or reorder steps the playbook would keep. Read [`references/prompting.md`](references/prompting.md) before you help word one. [Guide page 2](../../docs/guide/02-poteto-mode.md) has examples.
+`/santislop-mode` matches the task to a playbook, copies the playbook's steps into the todo list, and runs the other skills as the steps need them. A step it skips stays in the list as `skip: <reason>`. A good prompt states the goal and how to tell it's done. It doesn't list skills, because a hand-written sequence tends to drop or reorder steps the playbook would keep. Read [`references/prompting.md`](references/prompting.md) before you help word one. [Guide page 2](../../docs/guide/02-santislop-mode.md) has examples.
 
-Claude Code has no modes, so `/poteto-mode` doesn't stay on by itself. Invoke it at the start of each task, as `/poteto-mode` or `/sskills:poteto-mode`. Mid-chat, "new task" makes it match a fresh playbook.
+Claude Code has no modes, so `/santislop-mode` doesn't stay on by itself. Invoke it at the start of each task, as `/santislop-mode` or `/sskills:santislop-mode`. Mid-chat, "new task" makes it match a fresh playbook.
 
-Link [Claude Code's skills docs](https://code.claude.com/docs/en/skills) when this comes up. `/poteto-mode` already uses `poteto-agent` for the subagents its playbook steps spawn. To get the same style from a subagent of your own, spawn it with `subagent_type: "sskills:poteto-agent"`.
+Link [Claude Code's skills docs](https://code.claude.com/docs/en/skills) when this comes up. `/santislop-mode` already uses `santislop-agent` for the subagents its playbook steps spawn. To get the same style from a subagent of your own, spawn it with `subagent_type: "sskills:santislop-agent"`.
 
 ## Pick a skill
 
-The default answer is `/poteto-mode`, which runs most of the others when its steps need them. Name a skill directly when the user wants more or less of something than the playbook gives. Read the skill before you recommend it, and give one example prompt.
+The default answer is `/santislop-mode`, which runs most of the others when its steps need them. Name a skill directly when the user wants more or less of something than the playbook gives. Read the skill before you recommend it, and give one example prompt.
 
 | The user wants to | Skill |
 |---|---|
-| Do any non-trivial task with rigor | [`/poteto-mode`](../poteto-mode/SKILL.md) |
+| Do any non-trivial task with rigor | [`/santislop-mode`](../santislop-mode/SKILL.md) |
 | Check that the agent understood their goal and the problem before it starts | [`/in-your-own-words`](../in-your-own-words/SKILL.md) |
 | Aim a task higher before starting: more expert, more outcome-focused, not overspecified | [`/sharpen`](../sharpen/SKILL.md) |
 | Know how code works now, or where new code should live | [`/how`](../how/SKILL.md) |
@@ -102,11 +102,11 @@ Close calls:
 Not in sskills:
 
 - `simplify`, `run`, `loop`, and `skill-creator` are Claude Code built-in or bundled skills. `simplify` covers deslop-style cleanup of changed code, `run` launches and drives apps and CLIs, and `claude-in-chrome` drives browser UIs.
-- sskills has no `/orchestrate` skill. Orchestrate is a `/poteto-mode` playbook. If the slash menu shows `/orchestrate`, another plugin provides it.
+- sskills has no `/orchestrate` skill. Orchestrate is a `/santislop-mode` playbook. If the slash menu shows `/orchestrate`, another plugin provides it.
 
 ## Playbooks and principles
 
-Playbooks are step lists inside `/poteto-mode`, not skills, so they have no slash command. Inside `/poteto-mode`, describing the task picks one, and these phrases name one directly:
+Playbooks are step lists inside `/santislop-mode`, not skills, so they have no slash command. Inside `/santislop-mode`, describing the task picks one, and these phrases name one directly:
 
 - "babysit this pr" or "check on pr 123" runs Babysit. It drives the PR to merge-ready and stops there. It doesn't merge unless the user asks to merge, land, or ship.
 - "land the stack" runs Shipping.
@@ -115,21 +115,21 @@ Playbooks are step lists inside `/poteto-mode`, not skills, so they have no slas
 - "full autopilot on this queue" runs Autopilot-full. "stack them, don't ship" runs Autopilot-stack.
 - "run the eval playbook" runs Eval.
 
-Without `/poteto-mode`, a phrase such as "babysit this pr" can start another plugin's skill for the same job instead. The Playbooks section of [`poteto-mode`](../poteto-mode/SKILL.md) lists every playbook and when it applies. [Guide page 6](../../docs/guide/06-verify-and-ship.md) covers opening, babysitting, and landing a PR.
+Without `/santislop-mode`, a phrase such as "babysit this pr" can start another plugin's skill for the same job instead. The Playbooks section of [`santislop-mode`](../santislop-mode/SKILL.md) lists every playbook and when it applies. [Guide page 6](../../docs/guide/06-verify-and-ship.md) covers opening, babysitting, and landing a PR.
 
-sskills has no planning skill. Claude Code's plan mode works alongside it. For work that spans phases or stacked PRs, asking `/poteto-mode` for a plan runs the [Multi-phase plan playbook](../poteto-mode/playbooks/multi-phase-plan.md), which writes the plan and doesn't implement it. For a design question, the Prototype playbook or `/architect` settles it in code first.
+sskills has no planning skill. Claude Code's plan mode works alongside it. For work that spans phases or stacked PRs, asking `/santislop-mode` for a plan runs the [Multi-phase plan playbook](../santislop-mode/playbooks/multi-phase-plan.md), which writes the plan and doesn't implement it. For a design question, the Prototype playbook or `/architect` settles it in code first.
 
-Principles are one-rule skills that `/poteto-mode` reads and cites in its replies. The user rarely invokes one. They steer with the names instead, as in "apply prove it works. show me the real output." Typing `/principle-<name>` still loads one on demand. [Guide page 8](../../docs/guide/08-principles.md) lists them.
+Principles are one-rule skills that `/santislop-mode` reads and cites in its replies. The user rarely invokes one. They steer with the names instead, as in "apply prove it works. show me the real output." Typing `/principle-<name>` still loads one on demand. [Guide page 8](../../docs/guide/08-principles.md) lists them.
 
 ## Fix a run that went wrong
 
 | Symptom | Fix |
 |---|---|
-| The playbook stopped applying after a few turns | Claude Code has no modes. Invoke `/poteto-mode` at the start of each task. |
+| The playbook stopped applying after a few turns | Claude Code has no modes. Invoke `/santislop-mode` at the start of each task. |
 | A question got treated as the next step of the last task | Say "new task", or say the turn doesn't need the playbook. |
 | A new model choice had no effect | The rules file from `/setup-sskills` applies to new sessions. Start one. |
 | Runs cost more than expected | See the cost paragraph under Get set up. |
-| A skill didn't load on its own | Only `/setup-sskills` loads from the user's words. The others load when the user types them or when `/poteto-mode` runs them, and it doesn't run every skill. |
+| A skill didn't load on its own | Only `/setup-sskills` loads from the user's words. The others load when the user types them or when `/santislop-mode` runs them, and it doesn't run every skill. |
 | Parallel agents overwrote each other | Give each agent its own worktree, or run them with `isolation: "worktree"` or `isolation: "remote"` on the `Agent` tool. |
 | An overnight run moved but finished nothing | `/loop` needs a check that can pass or fail, not a duration. See [guide page 7](../../docs/guide/07-overnight.md). |
 | The reply claims success from a green build | Ask for the real command, flow, stored value, or profile. That's the prove-it-works principle. |
@@ -138,9 +138,9 @@ For a run that drifts, [`references/prompting.md`](references/prompting.md) has 
 
 ## Make sskills my own
 
-- [`/automate-me`](../automate-me/SKILL.md) drafts a personal mode skill from the user's own history, to use alongside `/poteto-mode`.
+- [`/automate-me`](../automate-me/SKILL.md) drafts a personal mode skill from the user's own history, to use alongside `/santislop-mode`.
 - [`/reflect`](../reflect/SKILL.md) after a session turns its lessons into skill edits the user approves.
-- `/poteto-mode write a skill for <workflow>` runs the authoring playbook. The eval playbook tests a skill change blind.
+- `/santislop-mode write a skill for <workflow>` runs the authoring playbook. The eval playbook tests a skill change blind.
 - Fix a misbehaving skill in its own PR, not inside the feature work where it went wrong.
 
 [Guide page 9](../../docs/guide/09-make-it-yours.md) covers each of these.

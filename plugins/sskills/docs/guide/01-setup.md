@@ -11,7 +11,7 @@ sskills is a fork of pstack, the Claude Code port of the Cursor plugin by Lauren
 /plugin install sskills@<marketplace>
 ```
 
-Claude Code confirms the plugin is installed. Plugin skills are namespaced, so `/sskills:poteto-mode` always works, and the bare `/poteto-mode` usually works when it's unambiguous. This guide uses the bare names.
+Claude Code confirms the plugin is installed. Plugin skills are namespaced, so `/sskills:santislop-mode` always works, and the bare `/santislop-mode` usually works when it's unambiguous. This guide uses the bare names.
 
 ## Pick your models
 
@@ -46,18 +46,18 @@ sskills spends extra tokens on subagents and review panels. That's the price of 
 - Rerun `/setup-sskills` and pick a smaller reasoning budget or cheaper models. A strong model in the main chat with cheaper, faster models in the code roles is a good split.
 - Set a role to `auto` or `inherit-parent` so it runs on the chat's own model.
 - Shorten a panel list. Each entry runs one subagent.
-- Save `/poteto-mode` for work that needs rigor. A small, obvious edit doesn't.
+- Save `/santislop-mode` for work that needs rigor. A small, obvious edit doesn't.
 
 ## Run your first task
 
 Pick something real but small, and describe it the way you'd describe it to a colleague:
 
 ```text
-/poteto-mode add a --json flag to this command. text output stays byte-identical. verify both.
+/santislop-mode add a --json flag to this command. text output stays byte-identical. verify both.
 ```
 
-Watch the todo list. Its first items are the matched playbook's steps copied in, the Feature playbook for this prompt. If `/poteto-mode` skips a step, the step stays in the list with `skip: <reason>`, so you can see what it chose not to do.
+Watch the todo list. Its first items are the matched playbook's steps copied in, the Feature playbook for this prompt. If `/santislop-mode` skips a step, the step stays in the list with `skip: <reason>`, so you can see what it chose not to do.
 
-From here you can type normal follow-ups. Claude Code has no modes, so invoke `/poteto-mode` at the start of each task. Say "new task" when the subject changes so it matches a fresh playbook.
+From here you can type normal follow-ups. Claude Code has no modes, so invoke `/santislop-mode` at the start of each task. Say "new task" when the subject changes so it matches a fresh playbook.
 
-Next: [Route work through `/poteto-mode`](./02-poteto-mode.md).
+Next: [Route work through `/santislop-mode`](./02-santislop-mode.md).
