@@ -1,0 +1,9 @@
+{
+  "name": "sskills",
+  "version": "0.16.0",
+  "description": "Santiago Saavedra's agent skills: a maintained fork of Lauren Tan's pstack, adding santislop-mode. Rigorous agent workflows you can parallelize with confidence.",
+  "author": {"name": "Santiago Saavedra"},
+  "homepage": "https://github.com/ssaavedra/sskills",
+  "repository": "https://github.com/ssaavedra/sskills",
+  "license": "MIT"
+}
