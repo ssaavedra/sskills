@@ -1,16 +1,22 @@
 # sskills
 
-i'm [poteto](https://x.com/poteto). i'm not a president or ceo, but i've worked with millions of lines of code at Meta, Netflix, and Cursor. i'm also on the react core team where i help build and maintain react compiler.
+i'm [ssaavedra](https://github.com/ssaavedra). worked at greenfield and pre-TCP brownfield projects with ai.
 
-there's a growing sense that ai writes too much slop code. i agree. i don't want to ship like a team of twenty slop artists. throughput without quality is not a goal i aspire to. if you want to go fast, go deep first. 
+this is my skills compilation for making my own sense of projects. even in this age, i still want to adhere to a quality standard. thus, i got inspired initially by [poteto](https://x.com/poteto)'s pstack of skills (a cursor plugin), and wanted to expand that to my own ways of working.
 
-**sskills is my answer.** these are the same skills i use everyday to ship high quality code at Cursor. this turns claude code into a real engineering team. the goal is not to maximize loc, in fact it's the opposite. sskills helps you write less, but higher quality code.
+currently sskills is a claude code plugin, but adding codex and cursor support is probably gonna happen soon.
 
-**sskills gives you fearless parallelism.** when you can go deep on one agent and trust it to write good, verifiable code, you can truly parallelize with confidence. start multiple agents up with `santislop-mode` and trust that they'll apply rigorous engineering principles to their work.
+i didn't want to keep the name on the fork because i still want pstack to be upgraded in its own lifecycle. at some point it would be nice to be able to have both installed at once so you can use whichever depending on the task, and what you need.
 
-**claude code gives you the best of all worlds.** every frontier model has its strengths and weaknesses. use any model with sskills. in fact, many of my skills use multi-model workflows to take advantage of each model's unique strengths.
+poteto said it very well: "throughput without quality is not a goal i aspire to. if you want to go fast, go deep first."
 
-sskills is a fork of lauren tan's [pstack](https://github.com/cursor/plugins/tree/main/pstack) (originally a cursor plugin), maintained and extended by santiago saavedra. it adds [`/santislop-mode`](./skills/santislop-mode/SKILL.md) (S's Antislop Mode), our evolving fork of [`/poteto-mode`](./skills/poteto-mode/SKILL.md); the original `/poteto-mode` stays as a reference.
+she's right.
+
+**what are goals here** minimize slop. minimize changed loc. ensure you can still review code and architectural decisions.
+
+**claude code gives you a great harness.** cursor gives you the ability to use any frontier model easily, that is not so ergonomic with claude code. but you get the benefits of /advisor and ultracode, if you need to. in the future i'd like this stack to be available for codex and cursor too, but let's focus on today.
+
+sskills is a fork of lauren tan's [pstack](https://github.com/cursor/plugins/tree/main/pstack) (originally a cursor plugin), maintained and extended by santiago saavedra. it adds [`/santislop-mode`](./skills/santislop-mode/SKILL.md) (S's Antislop Mode), our evolving fork of [`/poteto-mode`](./skills/poteto-mode/SKILL.md); the original `/poteto-mode` stays as a reference (if requested, we could remove it so you can also use pstack in tandem, but you can already do this in claude code due to the /prefix:skill syntax)
 
 fork it. improve it. make it yours. PRs are welcome! 
 

@@ -1,12 +1,11 @@
 ---
-name: Santislop Mode
-description: S's Antislop Mode. Santiago's agent style, forked from santislop-mode, for concise, detailed responses, deliberate subagents, unslopped prose, simple code, and verified work. Use for /santislop-mode, or requests to work in this style.
-disable-model-invocation: true
+name: santislop-mode
+description: Antislop Mode. Use for concise, detailed responses, deliberate subagents, unslopped prose, simple code, and verified work. Use for /santislop-mode, or requests to work in this style.
 icon: crown
 color: yellow
 ---
 
-# Poteto mode
+# Antislop Mode
 
 Bundled skills live at `../<name>/SKILL.md` from this file, so put this file's absolute path in every `santislop-agent` prompt.
 
