@@ -4,7 +4,7 @@ i'm [ssaavedra](https://github.com/ssaavedra). worked at greenfield and pre-TCP 
 
 this is my skills compilation for making my own sense of projects. even in this age, i still want to adhere to a quality standard. thus, i got inspired initially by [poteto](https://x.com/poteto)'s pstack of skills (a cursor plugin), and wanted to expand that to my own ways of working.
 
-currently sskills is a claude code plugin, but adding codex and cursor support is probably gonna happen soon.
+sskills installs in claude code and codex from the same marketplace and skill files. cursor support is still planned.
 
 i didn't want to keep the name on the fork because i still want pstack to be upgraded in its own lifecycle. at some point it would be nice to be able to have both installed at once so you can use whichever depending on the task, and what you need.
 
@@ -14,7 +14,7 @@ she's right.
 
 **what are goals here** minimize slop. minimize changed loc. ensure you can still review code and architectural decisions.
 
-**claude code gives you a great harness.** cursor gives you the ability to use any frontier model easily, that is not so ergonomic with claude code. but you get the benefits of /advisor and ultracode, if you need to. in the future i'd like this stack to be available for codex and cursor too, but let's focus on today.
+**claude code gives you a great harness.** cursor gives you the ability to use any frontier model easily, that is not so ergonomic with claude code. but you get the benefits of /advisor and ultracode, if you need to.
 
 sskills is a fork of lauren tan's [pstack](https://github.com/cursor/plugins/tree/main/pstack) (originally a cursor plugin), maintained and extended by santiago saavedra. it adds [`/santislop-mode`](./skills/santislop-mode/SKILL.md) (S's Antislop Mode), our evolving fork of [`/poteto-mode`](./skills/poteto-mode/SKILL.md); the original `/poteto-mode` stays as a reference (if requested, we could remove it so you can also use pstack in tandem, but you can already do this in claude code due to the /prefix:skill syntax)
 
@@ -22,12 +22,29 @@ fork it. improve it. make it yours. PRs are welcome!
 
 ## install
 
+### claude code
+
 ```bash
 /plugin marketplace add <path-or-repo>
-/plugin install sskills@<marketplace>
+/plugin install sskills@sskills-local
 ```
 
 plugin skills are namespaced, so you can also type `/sskills:santislop-mode`; the bare name usually works when it's unambiguous.
+
+### codex
+
+run these commands with a codex cli that supports `codex plugin`:
+
+```bash
+codex plugin marketplace add <path-or-repo>
+codex plugin add sskills@sskills-local
+```
+
+for a local checkout, pass the marketplace root, which contains `.claude-plugin/marketplace.json`. codex accepts [claude-compatible plugin manifests](https://developers.openai.com/plugins/build/plugins/), so both clients share the existing package.
+
+start a new codex session after installation and ask the agent to use the `santislop-mode` skill.
+
+the workflows still contain claude-specific instructions, including `Agent`, `AskUserQuestion`, sonnet and opus model aliases, and `~/.claude/rules/sskills-models.md`. use the tools and models available in your codex session. `/setup-sskills` configures claude code only. the guide and examples below describe claude code.
 
 ## get started
 
